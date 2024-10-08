@@ -1,9 +1,12 @@
 "use client";
 
 import styles from "./Timer.module.css"
-import React, { useEffect, useState } from "react";
-
 import { cn } from "@/lib/utils";
+
+import React, { useRef, useEffect, useState } from "react";
+import { useDiscountStore } from "@/store/store.ts";
+
+import gsap from "gsap";
 
 interface TimerProps {
 	duration: number;
@@ -12,31 +15,54 @@ interface TimerProps {
 
 export const Timer = ({ duration, warningDuration }: TimerProps) => {
 	const [timer, setTimer] = useState(duration);
+	const [isCompleted, setIsCompleted] = useState(false);
+	const warning = timer <= warningDuration;
 
-	const onComplete = () => {
-		console.log("Timer completed");
-	}
+	const { setDiscount } = useDiscountStore();
+
+	const tlRef = useRef<GSAPTween | null>(null);
+
+	// GSAP animations
+	useEffect(() => {
+		if (warning && !isCompleted) {
+			// Start or continue the animation
+			tlRef.current = gsap.to(".timer--warning", {
+				repeat: -1,
+				scale: 1.1,
+				duration: 0.5,
+				yoyo: true,
+				ease: "sine"
+			});
+		}
+
+		return () => {
+			if (tlRef.current) {
+				tlRef.current.kill();
+			}
+		};
+	}, [warning, isCompleted]);
 
 	useEffect(() => {
 		if (timer <= 0) {
-			onComplete();
+			setIsCompleted(true);
+			setDiscount(false);
 			return;
 		}
 
 		const interval = setInterval(() => setTimer((prev) => --prev), 1000)
 
 		return () => clearInterval(interval);
-	}, [timer, onComplete]);
+	}, [timer, setDiscount, setIsCompleted]);
 
 	const minutes = Math.trunc(timer / 60),
 				seconds = Math.trunc(timer % 60);
 
 	return (
 		<div className={cn(styles.timer,
-				"text-[#01B9C5] gap-x-3 lg:gap-x-2",
-				{ "timer--warning text-[#FD4D35]": timer <= warningDuration },
+				"timer text-[#01B9C5] gap-x-3 lg:gap-x-2",
+				{ "timer--warning text-[#FD4D35]": warning },
 		)}>
-			<div className="contents leading-none text-[40px]/none lg:text-6xl/none">
+			<div className="contents timer--clock leading-none text-[40px]/none lg:text-6xl/none">
 				<span className={styles.timer__minutes}>
 					{minutes < 10 ? "0" + minutes : String(minutes)}
 				</span>
