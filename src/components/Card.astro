@@ -1,0 +1,69 @@
+---
+import {
+	Card,
+	CardContent
+} from "@/components/ui/card";
+import DiscountBadge from "@/components/DiscountBadge.astro";
+
+import { cn } from "@/lib/utils";
+
+interface Props {
+	level: "1 неделя" | "1 месяц" | "3 месяца" | "навсегда";
+	price: number;
+	priceDiscount: number;
+	discountActive: boolean;
+	selected?: boolean;
+}
+
+const { level, price, priceDiscount, discountActive, selected = false } = Astro.props;
+
+const PROMO_CONTENT = {
+	"1 неделя": {
+		label: "Чтобы просто начать 👍🏻",
+		discountPercent: 30
+	},
+	"1 месяц": {
+		label: "Привести тело впорядок 💪🏻",
+		discountPercent: 40
+	},
+	"3 месяца": {
+		label: "Изменить образ жизни 🔥",
+		discountPercent: 50
+	},
+	"навсегда": {
+		label: "Всегда быть в форме и поддерживать своё здоровье ⭐️",
+		discountPercent: 70
+	}
+}
+
+---
+<div class="sm:last:col-span-3 h-full group select-none">
+	<Card className={cn("border-2 h-full hover:border-[#01B9C5]/50 rounded-[20px]", selected
+		? "bg-[#01B9C5]/5 border-[#01B9C5]"
+		: "bg-white border-[#D3D6DD]"
+	)}>
+		<CardContent className="relative pb-[26px] px-[24px] sm:px-[30px] pt-[36px] sm:pt-[45px] flex sm:flex-col gap-x-[20px] gap-y-[18px] group-[:last-of-type]:flex-row sm:group-[:last-of-type]:pr-16">
+			<!-- Тариф и описание -->
+			<div class="flex flex-col space-y-4 justify-between w-36 sm:contents">
+				<div class="order-1 font-['Bebas_Neue_Cyrillic'] text-[#687078] text-3xl group-[:last-of-type]:lg:text-[38px] group-[:last-of-type]:text-foreground  group-[:last-of-type]:self-baseline">{level}</div>
+				<div class="order-3 font-medium text-center text-[#2F4353] group-[:last-of-type]:sm:text-left group-[:last-of-type]:sm:ml-[30px] group-[:last-of-type]:sm:self-end group-[:last-of-type]:sm:text-balance">
+					{PROMO_CONTENT[level].label}
+				</div>
+			</div>
+			<!-- Цены -->
+			<div class="order-2 text-end tracking-tighter group-[:last-of-type]:self-baseline">
+				<div class={cn(discountActive
+					? "text-[50px]/[50px] font-bold text-foreground"
+					: "hidden"
+				)}>{priceDiscount}₽</div>
+				<div class={cn( discountActive
+					? "text-2xl text-[#95979F] font-medium line-through"
+					: "text-[50px]/[50px] font-bold mb-[32px]"
+				)}>{price}₽</div>
+			</div>
+			{discountActive && (
+				<DiscountBadge>{`-${PROMO_CONTENT[level].discountPercent}%`}</DiscountBadge>
+			)}
+		</CardContent>
+	</Card>
+</div>

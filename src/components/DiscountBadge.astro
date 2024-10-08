@@ -1,0 +1,31 @@
+---
+import { Badge } from "lucide-react";
+---
+<div class="badge">
+	<Badge className="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] text-[#FD4D35] fill-[#FD4D35]" fill />
+	<p class="font-medium text-white">
+		<slot />
+	</p>
+</div>
+
+<style>
+	.badge {
+		position: absolute;
+		right: 35px;
+		top: 29px;
+	}
+
+	.badge > * {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	@media (min-width: 1024px) {
+		.badge {
+			right: 41px;
+			top: 0;
+		}
+	}
+</style>

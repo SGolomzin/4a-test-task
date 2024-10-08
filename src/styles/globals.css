@@ -4,7 +4,8 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /*--foreground: 0 0% 3.9%;*/
+    --foreground: 226 19% 22%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -89,7 +90,7 @@
     font-family: "PT Root UI";
     font-weight: 500;
     font-display: swap;
-    src: local("PT Root UI"), url("/fonts/PTRootUI-Regular-Medium.woff") format("woff"),
+    src: local("PT Root UI"), url("/fonts/PTRootUI-Medium.woff") format("woff"),
     url("/fonts/PTRootUI-Medium.woff2") format("woff2");
   }
 
@@ -115,4 +116,8 @@ html,
 body,
 :root {
   height: 100%;
+}
+
+a {
+  color: #2D97F9;
 }

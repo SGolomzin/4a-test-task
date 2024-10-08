@@ -1,0 +1,38 @@
+.timer {
+	display: grid;
+	grid-template-areas:
+			"minutes sep seconds"
+			"m-label .   s-label";
+	grid-template-columns: 1fr;
+	justify-items: center;
+	align-items: center;
+}
+
+.timer__minutes, .timer__separator, .timer__seconds {
+	font-family: 'Bebas Neue Cyrillic', sans-serif;
+}
+
+.timer__minutes-label, .timer__seconds-label {
+	font-weight: bold;
+	color: #818798;
+}
+
+.timer__minutes {
+	grid-area: minutes;
+}
+
+.timer__separator {
+	grid-area: sep;
+}
+
+.timer__seconds {
+	grid-area: seconds;
+}
+
+.timer__minutes-label {
+	grid-area: m-label;
+}
+
+.timer__seconds-label {
+	grid-area: s-label;
+}

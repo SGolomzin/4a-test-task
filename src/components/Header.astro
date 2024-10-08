@@ -1,0 +1,16 @@
+---
+import { Timer } from "@/components/Timer";
+import { Checkbox } from "./ui/checkbox";
+
+interface Props {
+	timeoutMinutes: number
+}
+
+const { timeoutMinutes } = Astro.props;
+
+---
+
+<div class="flex gap-4 justify-center items-center">
+	<p class="font-bold md:text-xl lg:text-3xl">Скидка действует:</p>
+	<Timer client:load duration={60 * 2} warningDuration={30} />
+</div>

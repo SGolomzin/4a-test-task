@@ -1,0 +1,54 @@
+---
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import promoImage from "@/assets/promo-materials/promo-with-gradient.png";
+
+import { cn } from "@/lib/utils";
+
+import Card from "@/components/Card.astro";
+import type { preparedData} from "@/types/prepared-data";
+
+interface Props {
+	contentData: preparedData
+}
+
+const { contentData } = Astro.props;
+
+let c = false;
+---
+
+<div class="container px-4 mx-auto bg-[#F5F7F7]">
+	<h1 class="font-['Rubik'] uppercase font-bold text-[24px]/[26px] lg:text-[40px]/[42px] mt-5 lg:mt-7 mb-5 lg:mb-24 sm:text-center">Выберите подходящий тарифный план</h1>
+	<div class="flex flex-col justify-center gap-x-20 lg:flex-row">
+		<div class="mx-auto w-[280px] lg:w-[434px] lg:mx-0">
+			<Image
+					class="h-[441px] w-[277px] md:h-auto md:w-auto"
+					src={promoImage}
+					alt="Промо изображение накаченного мужчины"
+			/>
+		</div>
+		<div class="flex flex-col lg:w-[684px]">
+			<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-3 gap-y-2 sm:gap-y-10 items-start mb-[12px]">
+				{contentData && Object.entries(contentData).map(([level, content]) => (
+					<Card
+							key={level}
+							level={level}
+							price={content.price}
+							priceDiscount={content.priceDiscount}
+							discountActive={true}
+					/>
+				))}
+			</div>
+			<p class="text-sm md:text-lg mb-[26px] font-medium">Следуя плану на 3 месяца, люди получают в 2 раза лучший результат, чем за 1 месяц</p>
+			<div class="mb-[50px] flex items-center">
+				<Checkbox id="terms" client:load className="mr-2" />
+				<label for="terms" class="text-[#818798] cursor-pointer">Я соглашаюсь с <a href="#">Правилами сервиса</a> и условиями <a href="#">Публичной оферты</a>.</label>
+			</div>
+			<Button
+				className="w-[281px] h-[76px] rounded-[60px] bg-[#FD4D35] font-['Rubik'] uppercase font-medium text-xl mb-[30px]"
+			>Купить</Button>
+			<p class="text-sm text-[#818798] mb-6">Нажимая «Купить», Пользователь соглашается на автоматическое списание денежных средств по истечению купленного периода. Дальнейшие списания по тарифам участвующим в акции осуществляются по полной стоимости согласно оферте.</p>
+		</div>
+	</div>
+</div>

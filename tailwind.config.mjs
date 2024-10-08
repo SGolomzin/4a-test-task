@@ -54,7 +54,7 @@ export default {
     			}
     		},
 		    fontFamily: {
-					sans: ['"Bebas Neue Cyrillic"', '"PT Root UI"', '"Rubik"', ...defaultTheme.fontFamily.sans],
+					sans: ['"PT Root UI"', ...defaultTheme.fontFamily.sans],
 		    }
     	}
     },
