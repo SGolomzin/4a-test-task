@@ -16,7 +16,7 @@ export const Badge = ({ percent, show = true, className }: BadgeProps) => (
 			if (!show) {
 				gsap
 					.timeline({ onComplete: done })
-					.to(".badge", { opacity: 0, rotate: -180, scale: 0, duration: 0.5 })
+					.to(".badge", { opacity: 0, rotate: -180, scale: 0, duration: 0.7 })
 			}
 		}}
 	>

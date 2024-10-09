@@ -19,7 +19,10 @@ export const Modal = ({ contentData }: { contentData: any}) => {
 	const [open, setOpen] = useState(!isDiscount);
 
 	useEffect(() => {
-		setOpen(!isDiscount);
+		setTimeout(() =>
+			setOpen(!isDiscount),
+			2000
+		)
 	}, [isDiscount]);
 
 	return (

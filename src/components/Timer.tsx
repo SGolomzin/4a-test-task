@@ -28,10 +28,11 @@ export const Timer = ({ duration, warningDuration }: TimerProps) => {
 			// Start or continue the animation
 			tlRef.current = gsap.to(".timer--warning", {
 				repeat: -1,
+				opacity: 0.5,
 				scale: 1.1,
 				duration: 0.5,
 				yoyo: true,
-				ease: "sine"
+				ease: "power3.in"
 			});
 		}
 
@@ -60,7 +61,7 @@ export const Timer = ({ duration, warningDuration }: TimerProps) => {
 	return (
 		<div className={cn(styles.timer,
 				"timer text-[#01B9C5] gap-x-3 lg:gap-x-2",
-				{ "timer--warning text-[#FD4D35]": warning },
+				{ "timer--warning will-change-transform text-[#FD4D35]": warning },
 		)}>
 			<div className="contents timer--clock leading-none text-[40px]/none lg:text-6xl/none">
 				<span className={styles.timer__minutes}>
