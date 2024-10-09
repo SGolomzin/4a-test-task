@@ -33,7 +33,6 @@ interface PricePlanCardProps {
 	selected: boolean;
 }
 
-
 export const PricePlanCard = ({plan, price, priceDiscount, selected}: PricePlanCardProps) => {
 	const {isDiscount} = useDiscountStore();
 
@@ -61,7 +60,11 @@ export const PricePlanCard = ({plan, price, priceDiscount, selected}: PricePlanC
 						: "text-[50px]/[50px] font-bold mb-[32px]"
 					)}>{price}₽</div>
 				</div>
-				<Badge percent={PROMO_CONTENT[plan].discountPercent} show={isDiscount}/>
+				<Badge
+					percent={PROMO_CONTENT[plan].discountPercent}
+					show={isDiscount}
+					className="absolute right-2 top-1 lg:right-1 lg:top-[-35px] w-[50px] h-[50px] lg:w-[70px] lg:h-[70px]"
+				/>
 			</CardContent>
 		</Card>
 	)

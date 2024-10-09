@@ -1,10 +1,14 @@
-import styles from "@/components/Badge.module.css";
 import { Transition } from "react-transition-group";
 import { BadgeIcon } from "lucide-react";
 import gsap from "gsap";
 import { cn } from "@/lib/utils";
 
-export const Badge = ({ percent, show = true }: { percent: number, show: boolean }) => (
+interface BadgeProps extends React.HTMLProps<HTMLDivElement> {
+	percent: number;
+	show: boolean;
+}
+
+export const Badge = ({ percent, show = true, className }: BadgeProps) => (
 	<Transition
 		in={show}
 		unmountOnExit
@@ -16,9 +20,9 @@ export const Badge = ({ percent, show = true }: { percent: number, show: boolean
 			}
 		}}
 	>
-		<div className={cn("badge", styles.badge)}>
-			<BadgeIcon className="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] text-[#FD4D35] fill-[#FD4D35]" />
-			<p className="font-medium text-white">{`-${percent}%`}</p>
+		<div className={cn("badge", className)}>
+				<BadgeIcon className="absolute h-full w-full text-[#FD4D35] fill-[#FD4D35] top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4" />
+				<p className="absolute text-white top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4">{`-${percent}%`}</p>
 		</div>
 	</Transition>
 

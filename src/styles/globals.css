@@ -121,3 +121,27 @@ body,
 a {
   color: #2D97F9;
 }
+
+.crossed {
+  position: relative;
+}
+
+.crossed::after {
+  position: absolute;
+  content: "";
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(to top left,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) calc(50% - 2px),
+    #FD4D35 50%,
+    rgba(0,0,0,0) calc(50% + 2px),
+    rgba(0,0,0,0) 100%),
+    linear-gradient(to top right,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) calc(50% - 2px),
+    #FD4D35 50%,
+    rgba(0,0,0,0) calc(50% + 2px),
+    rgba(0,0,0,0) 100%);
+}

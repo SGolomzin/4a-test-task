@@ -4,8 +4,7 @@ import type { preparedData} from "@/types/prepared-data";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label";
-import { PricePlanCard } from "@/components/PricePlanCard.tsx";
-import type { PromoKeys } from "@/components/PricePlanCard.tsx";
+import { PricePlanCard, type PromoKeys } from "@/components/PricePlanCard.tsx";
 
 import { useState } from "react";
 
