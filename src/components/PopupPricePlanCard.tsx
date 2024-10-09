@@ -19,7 +19,7 @@ export const PopupPricePlanCard = ({ plan, price, pricePopup, selected, index }:
 			? "bg-[#01B9C5]/5 border-[#01B9C5]"
 			: "bg-white border-[#D3D6DD]"
 		)}>
-			<CardContent className="h-full pb-[18px] lg:pb-5 px-5 lg:px-6 pt-6 flex flex-col gap-y-4">
+			<CardContent className="h-full pb-[18px] xl:pb-5 px-5 xl:px-6 pt-6 flex flex-col gap-y-4">
 				{/* Тариф */}
 				<div className="flex justify-between items-center">
 					<div className="font-['Bebas_Neue_Cyrillic'] text-foreground text-2xl md:text-[26px]">{plan}</div>
@@ -30,7 +30,7 @@ export const PopupPricePlanCard = ({ plan, price, pricePopup, selected, index }:
 					/>
 				</div>
 				{/* Цены */}
-				<div className="flex justify-between items-baseline tracking-tighter lg:flex-col-reverse">
+				<div className="flex justify-between items-baseline tracking-tighter xl:flex-col-reverse">
 					<div className="flex">
 						<div className={"text-[44px]/[44px] md:text-[46px]/[46px] font-bold text-foreground pt-4"}>{pricePopup}₽</div>
 						<Badge
@@ -39,7 +39,7 @@ export const PopupPricePlanCard = ({ plan, price, pricePopup, selected, index }:
 							className="relative w-10 h-10 sm:w-[50px] sm:h-[50px] text-[13px]"
 						/>
 					</div>
-					<div className={"crossed text-[20px]/[20px] font-bold text-[#6C707B] lg:mb-[32px]"}>{price}₽</div>
+					<div className={"crossed text-[20px]/[20px] font-bold text-[#6C707B] xl:mb-[32px]"}>{price}₽</div>
 				</div>
 			</CardContent>
 		</Card>

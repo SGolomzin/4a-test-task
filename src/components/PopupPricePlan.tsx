@@ -18,7 +18,7 @@ export const PopupPricePlan = ({ data }: PopupPricePlanProps) => {
 		<RadioGroup
 			defaultValue={selected}
 			onValueChange={(value) => setSelected(value)}
-			className="grid grid-cols-1 lg:grid-cols-3 gap-x-3 gap-y-1.5 mb-5 sm:mb-10"
+			className="grid grid-cols-1 xl:grid-cols-3 gap-x-3 gap-y-1.5 mb-5 sm:mb-10"
 		>
 			{data && Object.entries(data).map(([level, content], index) => {
 				const { price, pricePopup } = content,

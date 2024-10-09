@@ -6,8 +6,10 @@ import {
 	AlertDialogDescription,
 	AlertDialogHeader,
 	AlertDialogTitle,
+	AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { useEffect, useState } from "react";
 import { XIcon } from "lucide-react";
 
@@ -37,18 +39,20 @@ export const Modal = ({ contentData }: { contentData: any}) => {
 						</Button>
 					</AlertDialogCancel>
 				</AlertDialogHeader>
-				<AlertDialogTitle className="font-['Rubik'] text-2xl md:text-3xl text-bold text-center uppercase mb-3.5">
+				<AlertDialogTitle className="font-['Rubik'] text-2xl xl:text-3xl text-bold text-center uppercase mb-3.5">
 					Не упусти свой <span className="text-[#01B9C5]">последний шанс</span>
 				</AlertDialogTitle>
-				<AlertDialogDescription className="text-center text-[15px] md:text-2xl text-foreground">
+				<AlertDialogDescription className="text-center text-[15px] xl:text-2xl text-foreground">
 					Мы знаем, как трудно начать.. <b>Поэтому!</b>
 				</AlertDialogDescription>
-				<div className="border border-[#01B9C5] mx-auto rounded-[30px] text-[15px] md:text-2xl pt-3 pb-3.5 px-5 w-fit mb-[18px] font-medium">
+				<div className="border border-[#01B9C5] mx-auto rounded-[30px] text-[15px] xl:text-2xl pt-3 pb-3.5 px-5 w-fit mb-[18px] font-medium">
 					Дарим скидку для <span className="text-[#01B9C5]">лёгкого старта</span> 🏃‍♂️
 				</div>
-				<p className="text-[15px] text-foreground md:text-2xl mb-1.5 font-medium">Посмотри, что мы для тебя приготовили 🔥</p>
-				<PopupPricePlan data={contentData} />
-				<div className="flex justify-center">
+				<p className="text-[15px] text-foreground xl:text-2xl mb-1.5 font-medium">Посмотри, что мы для тебя приготовили 🔥</p>
+				<ScrollArea className="h-52 xl:h-auto xl:contents">
+					<PopupPricePlan data={contentData} />
+				</ScrollArea>
+				<AlertDialogFooter className="flex justify-center">
 					<AlertDialogAction asChild>
 						<Button
 							variant="secondary"
@@ -58,7 +62,7 @@ export const Modal = ({ contentData }: { contentData: any}) => {
 							Начать тренироваться
 						</Button>
 					</AlertDialogAction>
-				</div>
+				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
 	)
