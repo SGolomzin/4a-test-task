@@ -8,7 +8,7 @@ export const Badge = ({ percent, show = true }: { percent: number, show: boolean
 	<Transition
 		in={show}
 		unmountOnExit
-		addEndListener={(node, done) => {
+		addEndListener={(_, done) => {
 			if (!show) {
 				gsap
 					.timeline({ onComplete: done })
