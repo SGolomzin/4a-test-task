@@ -44,7 +44,7 @@ const { contentData } = Astro.props;
 
 {/* GSAP animations -- Button */}
 <script>
-	const btn = document.querySelector("#submit-button");
+	const btn = document.querySelector("#submit-button")!;
 	const scaleTween = gsap.to(btn, {
 		repeat: -1,
 		opacity: 0.5,
@@ -60,7 +60,7 @@ const { contentData } = Astro.props;
 
 {/* GSAP animations -- Content */}
 <script>
-	const container = document.querySelector(".container");
+	const container = document.querySelector(".container")!;
 	const heading = container.querySelector("h1");
 	const image = container.querySelector(".image-container");
 	const content = container.querySelector(".content-wrapper");

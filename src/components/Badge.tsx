@@ -12,6 +12,7 @@ export const Badge = ({ percent, show = true, className }: BadgeProps) => (
 	<Transition
 		in={show}
 		unmountOnExit
+		// @ts-expect-error: Let's ignore a single compiler error like this unreachable code
 		addEndListener={(_, done) => {
 			if (!show) {
 				gsap

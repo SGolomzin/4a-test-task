@@ -1,14 +1,8 @@
 ---
 import { Timer } from "@/components/Timer";
-
-interface Props {
-	timeoutMinutes: number
-}
-
-const { timeoutMinutes } = Astro.props;
 ---
 
 <div class="flex gap-4 justify-center items-center bg-white">
 	<p class="font-bold md:text-xl lg:text-3xl">Скидка действует:</p>
-	<Timer client:load duration={5} warningDuration={3} />
+	<Timer client:load duration={60} warningDuration={30} />
 </div>

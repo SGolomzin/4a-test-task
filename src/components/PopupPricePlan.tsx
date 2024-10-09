@@ -2,7 +2,7 @@
 
 import type { preparedData} from "@/types/prepared-data";
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { RadioGroup } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label";
 import { PopupPricePlanCard } from "@/components/PopupPricePlanCard.tsx";
 import { useState } from "react";

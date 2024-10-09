@@ -3,7 +3,7 @@
 import styles from "./Timer.module.css"
 import { cn } from "@/lib/utils";
 
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDiscountStore } from "@/store/store.ts";
 
 import gsap from "gsap";
