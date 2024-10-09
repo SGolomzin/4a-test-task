@@ -4,6 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Content from "@/components/Content.astro";
 
+import { Modal } from "@/components/Modal.tsx";
+
 const response = await fetch('https://t-pay.iqfit.app/subscribe/list-test');
 const data = await response.json();
 
@@ -30,5 +32,6 @@ const contentData = prepareData(data);
 	<main class="h-screen grid grid-rows-[80px,1fr]">
 		<Header />
 		<Content contentData={contentData} />
+		<Modal client:load />
 	</main>
 </Layout>
