@@ -1,12 +1,10 @@
 "use client";
 
-import styles from "./PricePlanCard.module.css"
-
 import { Card, CardContent } from "@/components/ui/card.tsx";
+import { Badge } from "@/components/Badge.tsx";
 import { cn } from "@/lib/utils.ts";
 
 import { useDiscountStore } from "@/store/store.ts"
-import { BadgeIcon } from "lucide-react";
 
 const PROMO_CONTENT = {
 	"1 неделя": {
@@ -35,12 +33,6 @@ interface PricePlanCardProps {
 	selected: boolean;
 }
 
-const Badge = ({ percent }: { percent: number }) => (
-	<div className={styles.badge}>
-		<BadgeIcon className="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] text-[#FD4D35] fill-[#FD4D35]" />
-		<p className="font-medium text-white">{`-${percent}%`}</p>
-	</div>
-);
 
 export const PricePlanCard = ({plan, price, priceDiscount, selected}: PricePlanCardProps) => {
 	const {isDiscount} = useDiscountStore();
@@ -69,7 +61,7 @@ export const PricePlanCard = ({plan, price, priceDiscount, selected}: PricePlanC
 						: "text-[50px]/[50px] font-bold mb-[32px]"
 					)}>{price}₽</div>
 				</div>
-				{isDiscount && <Badge percent={PROMO_CONTENT[plan].discountPercent}/>}
+				<Badge percent={PROMO_CONTENT[plan].discountPercent} show={isDiscount}/>
 			</CardContent>
 		</Card>
 	)
