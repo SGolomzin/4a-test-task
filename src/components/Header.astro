@@ -2,7 +2,7 @@
 import { Timer } from "@/components/Timer";
 ---
 
-<div class="flex gap-4 justify-center items-center bg-white">
+<div class="flex w-full h-20 drop-shadow z-10 fixed gap-4 justify-center items-center bg-white">
 	<p class="font-bold md:text-xl lg:text-3xl">Скидка действует:</p>
 	<Timer client:load duration={60 * 2} warningDuration={30} />
 </div>
